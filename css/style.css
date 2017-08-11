@@ -3,7 +3,7 @@
 }
 
 body {
-  position: relative;
+  /* position: relative; */
   background-color: #6C7A89;
 }
 
@@ -11,23 +11,34 @@ body {
   color: #ffffff;
   text-align: center;
   font-weight: 100;
-  display: none;
+  padding-top: 10px;
 }
 
 .wrapper {
-  width: 100%;
-  height: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
+  height: 520px;
+  width: 320px;
+  overflow: hidden;
+  background-color: white;
+  top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.5);
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
-
+.wrapper .inner {
+  overflow: scroll;
+  height: 520px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background: #f2f2f2;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+}
 .wrapper .inner::-webkit-scrollbar {
   width: 0 !important;
 }
-
 .wrapper .inner .content {
   padding: 10.66667px;
   position: relative;
@@ -35,7 +46,7 @@ body {
 }
 
 .nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -92,7 +103,8 @@ body {
 }
 
 .bottom {
-  position: fixed;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
   bottom: 0;
   left: 0;
   right: 0;
@@ -123,7 +135,7 @@ body {
   width: 0 !important;
 }
 .bottom .send {
-  position: fixed;
+  position: absolute;
   height: 42.66667px;
   width: 42.66667px;
   border-radius: 50%;
@@ -217,30 +229,37 @@ body {
   right: -9px;
 }
 
-@media (min-width: 560px) {
+@media (max-width: 560px) {
   .title {
-    display: inline;
+    display: none;
   }
   .wrapper {
-    height: 520px;
-    width: 320px;
-    overflow: hidden;
-    background-color: white;
-    position: fixed;
-    top: 100px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-    box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.5);
-    -webkit-transition: 0.3s ease;
-    transition: 0.3s ease;
+    width: 100%;
+    height: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    left: 0;
   }
   .wrapper .inner {
-    overflow: scroll;
-    height: 520px;
-    padding-top: 64px;
-    background: #f2f2f2;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none;
+    height: 100%;
+    height: 100vh;
+  }
+}
+
+@media (max-height: 640px) {
+  .title {
+    display: none;
+  }
+  .wrapper {
+    height: 100%;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+  }
+  .wrapper .inner {
+    height: 100%;
+    height: 100vh;
   }
 }
