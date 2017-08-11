@@ -1,0 +1,6 @@
+exclude:
+- CODE_OF_CONDUCT.md
+- LICENSE
+- README.md
+- .gitattributes
+- _config.yml
