@@ -30,7 +30,6 @@ body {
 .wrapper .inner {
   overflow: scroll;
   height: 520px;
-  padding-top: 64px;
   background: #f2f2f2;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
