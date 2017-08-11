@@ -21,6 +21,7 @@ body {
 .wrapper {
   position: relative;
   height: 520px;
+  padding-top: 64px;
   width: 320px;
   overflow: hidden;
   background-color: white;
