@@ -107,7 +107,6 @@ body {
 
 .bottom {
   position: absolute;
-  -webkit-backface-visibility: hidden;
   bottom: 0;
   left: 0;
   right: 0;
