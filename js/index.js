@@ -129,7 +129,7 @@ $(document).ready(function () {
 
   function scrollBottom() {
     $($inner).animate({
-      scrollTop: $($content).offset().top + $($content).outerHeight(true)
+      scrollTop: $($content).height()
     }, {
       queue: false,
       duration: 'ease'
@@ -181,6 +181,10 @@ $(document).ready(function () {
    */
   $send.on('click', function (e) {
     sendMessage();
+  });
+
+  $(window).on('resize', function() {
+    scrollBottom();
   });
 
   /**
