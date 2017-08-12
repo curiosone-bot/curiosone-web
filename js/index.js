@@ -2,6 +2,8 @@
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+const BASE_URL = "https://curiosone-api.herokuapp.com/"
+
 var Messenger = function () {
   function Messenger() {
     _classCallCheck(this, Messenger);
@@ -161,11 +163,14 @@ $(document).ready(function () {
    */
   function sendMessage() {
     var text = $input.val();
+    var body = {};
+
+    body.message = text;
     messenger.send(text);
 
-    setTimeout(function(text) {
-      messenger.recieve(text);
-    }, 500, text);
+    $.post(BASE_URL + "talk", body, function(result){
+        messenger.recieve(result.message);
+    });
 
     $input.val('');
     $input.focus();
