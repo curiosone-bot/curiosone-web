@@ -92,6 +92,42 @@ body {
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+.nav .default-nav .main-nav .headline .profile {
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  left: 30px;
+  bottom: 0;
+  top: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-image: url("../images/them.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 2px solid;
+  border-radius: 25px;
+}
+.nav .default-nav .main-nav .headline .status-badge {
+  height: 11px;
+  width: 11px;
+  position: absolute;
+  background-color: #a9a9a9;
+  border-radius: 25px;
+  bottom: 12px;
+  left: 64px;
+  z-index: 1;
+}
+.nav .default-nav .main-nav .headline .status-badge.online {
+  background-color: #00cc00;
+}
+.nav .default-nav .main-nav .headline .status-badge.error {
+  background-color: #e60000;
+}
+.nav .default-nav .main-nav .headline .status-badge.warning {
+  background-color: #ffae1a;
+}
+
 .nav .default-nav .main-nav .main-nav-item .main-nav-item-link {
   display: block;
   position: relative;
