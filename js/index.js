@@ -118,6 +118,26 @@ $(document).ready(function () {
   var $content = $('#content');
   var $inner = $('#inner');
 
+  var statusClass = {
+    ok: 'online',
+    success: 'online',
+    error: 'error',
+    timeout: 'warning'
+  }
+
+ /**
+  * Checks bot status
+  */
+  function getStatus() {
+    $.getJSON(BASE_URL + 'status', function(response, status){
+      status = response.status || status;
+      console.log(status, statusClass[status]);
+      $('#badge').addClass(statusClass[status])
+    });
+  };
+
+  getStatus();
+
   function safeText(text) {
     $content.find('.message-wrapper').last().find('.text-wrapper').text(text);
   }
@@ -163,12 +183,11 @@ $(document).ready(function () {
    */
   function sendMessage() {
     var text = $input.val();
-    var body = {};
+    var body = {message: text};
 
-    body.message = text;
     messenger.send(text);
 
-    $.post(BASE_URL + "talk", body, function(result){
+    $.post(BASE_URL + 'talk', body, function(result){
         messenger.recieve(result.message);
     });
 
