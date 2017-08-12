@@ -187,8 +187,8 @@ $(document).ready(function () {
 
     messenger.send(text);
 
-    $.post(BASE_URL + 'talk', body, function(result){
-        messenger.recieve(result.message);
+    $.post(BASE_URL + 'talk', body, function(response){
+        messenger.recieve(response.message);
     });
 
     $input.val('');
