@@ -131,8 +131,9 @@ $(document).ready(function () {
   function getStatus() {
     $.getJSON(BASE_URL + 'status', function(response, status){
       status = response.status || status;
-      console.log(status, statusClass[status]);
       $('#badge').addClass(statusClass[status])
+    }).done(function(){
+      setInterval(getStatus(), 2000);
     });
   };
 
