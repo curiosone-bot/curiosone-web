@@ -76,7 +76,7 @@ var Messenger = function () {
   };
 
   Messenger.prototype.validate = function validate(input) {
-    return !!input.length; // an amazing example of validation I swear.
+    return !!input.trim().length; // an amazing example of validation I swear.
   };
 
   return Messenger;
@@ -187,10 +187,10 @@ $(document).ready(function () {
     var body = {message: text};
 
     messenger.send(text);
-
-    $.post(BASE_URL + 'talk', body, function(response){
-        messenger.recieve(response.message);
-    });
+    if(messenger.validate(text))
+      $.post(BASE_URL + 'talk', body, function(response){
+          messenger.recieve(response.message);
+      });
 
     $input.val('');
     $input.focus();
