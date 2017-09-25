@@ -130,16 +130,12 @@ $(document).ready(function () {
  /**
   * Checks bot status
   */
-  function getStatus() {
+  setInterval(function getStatus() {
     $.getJSON(BASE_URL + 'status', function(response, status){
       status = response.status || status;
       $('#badge').addClass(statusClass[status])
-    }).done(function(){
-      setInterval(getStatus(), 10000);
     });
-  };
-
-  getStatus();
+  }, 5000);
 
   function safeText(text) {
     $content.find('.message-wrapper').last().find('.text-wrapper').text(text);
