@@ -2,7 +2,7 @@
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-const BASE_URL = "https://curiosone-api.herokuapp.com/"
+const BASE_URL = "https://curiosone-bot.herokuapp.com/"
 
 var Messenger = function () {
   function Messenger() {
@@ -13,6 +13,8 @@ var Messenger = function () {
 
     this.me = 1; // completely arbitrary id
     this.them = 5; // and another one
+
+    this.lastBotMessage = null;
 
     this.onRecieve = function (message) {
       return console.log('Recieved: ' + message.text);
@@ -133,7 +135,7 @@ $(document).ready(function () {
       status = response.status || status;
       $('#badge').addClass(statusClass[status])
     }).done(function(){
-      setInterval(getStatus(), 2000);
+      setInterval(getStatus(), 10000);
     });
   };
 
@@ -184,11 +186,12 @@ $(document).ready(function () {
    */
   function sendMessage() {
     var text = $input.val();
-    var body = {message: text};
+    var body = {message: text, scope: messenger.lastBotMessage ? messenger.lastBotMessage.scope : ""};
 
     messenger.send(text);
     if(messenger.validate(text))
-      $.post(BASE_URL + 'talk', body, function(response){
+      $.post(BASE_URL + 'talk', JSON.stringify(body), function(response){
+          messenger.lastBotMessage = response;
           messenger.recieve(response.message);
       });
 
