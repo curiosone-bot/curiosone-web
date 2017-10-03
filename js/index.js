@@ -143,7 +143,7 @@ $(document).ready(function () {
       'happy': ['😀', '😃', '😄', '😁', '😆'],
       'angry': ['😤', '😠', '😡']
     }
-    var randemo = ['🤓', '😲', '🙄', '🤔', '😬', '🦄', '🐳', '🦑'];
+    var randemo = ['🤓', '😲', '🙄', '🤔', '😬'];
     var emoji;
     if (emojis[emotion]) {
       emoji = emojis[emotion][Math.floor(Math.random() * emojis[emotion].length)];
