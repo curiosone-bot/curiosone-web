@@ -133,9 +133,25 @@ $(document).ready(function () {
   setInterval(function getStatus() {
     $.getJSON(BASE_URL + 'status', function(response, status){
       status = response.status || status;
-      $('#badge').addClass(statusClass[status])
+      $('#badge').addClass(statusClass[status]);
     });
   }, 5000);
+
+  function setEmotion(emotion) {
+    var emojis = {
+      'sad': ['😕', '🙁', '☹️', '😢', '😖', '😭'],
+      'happy': ['😀', '😃', '😄', '😁', '😆'],
+      'angry': ['😤', '😠', '😡']
+    }
+    var randemo = ['🤓', '😲', '🙄', '🤔', '😬', '🦄', '🐳', '🦑'];
+    var emoji;
+    if (emojis[emotion]) {
+      emoji = emojis[emotion][Math.floor(Math.random() * emojis[emotion].length)];
+    } else {
+      emoji = randemo[Math.floor(Math.random() * randemo.length)];
+    }
+    $('#feeling').text(emoji);
+  }
 
   function safeText(text) {
     $content.find('.message-wrapper').last().find('.text-wrapper').text(text);
@@ -189,6 +205,7 @@ $(document).ready(function () {
       $.post(BASE_URL + 'talk', JSON.stringify(body), function(response){
           messenger.lastBotMessage = response;
           messenger.recieve(response.message);
+          setEmotion(response.emotion);
       });
 
     $input.val('');

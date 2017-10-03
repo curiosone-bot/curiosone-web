@@ -127,7 +127,17 @@ body {
 .nav .default-nav .main-nav .headline .status-badge.warning {
   background-color: #ffae1a;
 }
-
+.nav .default-nav .main-nav .headline .status-feeling {
+  position: absolute;
+  right: 20px;
+  top: 17px;
+  border-radius: 50%;
+  border: 2px white solid;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  background-color: #dfdfdf;
+}
 .nav .default-nav .main-nav .main-nav-item .main-nav-item-link {
   display: block;
   position: relative;
